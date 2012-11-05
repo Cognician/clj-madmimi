@@ -2,9 +2,7 @@
   (:use midje.sweet)
   (:require [clj-madmimi.core :as clj-madmimi]))
 
-(background (around :facts 
-                    (with-redefs [clj-madmimi.core/send-mail identity]
-                      ?form)))
+(background (around :facts (with-redefs [clj-madmimi.core/send-mail identity] ?form)))
 
 (def mm (clj-madmimi/make-mad-mimi "NOT-A-VALID-API-KEY" "test@mail.com" "test@mail.com"))
 
