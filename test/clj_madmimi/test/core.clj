@@ -6,7 +6,7 @@
                     (with-redefs [clj-madmimi.core/send-mail identity]
                       ?form)))
 
-(def mm (clj-madmimi/make-mad-mimi "NOT-A-VALID-API-KEY" "test@mail.com"))
+(def mm (clj-madmimi/make-mad-mimi "NOT-A-VALID-API-KEY" "test@mail.com" "test@mail.com"))
 
 (def test-html "<html><body><b>Test Body</b>[[tracking_beacon]]</body></html>")
 

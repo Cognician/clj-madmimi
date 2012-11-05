@@ -9,16 +9,16 @@
                              :throw-exceptions false}))
 
 (defn mad-mimi
-  [api-key username mail]
+  [api-key username from mail]
   {:pre [(every? #{:promotion :to :subject :html} (keys mail))]}
   (send-mail {:api_key api-key
               :username username
-              :from username
+              :from from
               :promotion_name (:promotion mail)
               :recipient (:to mail)
               :subject (:subject mail)
               :raw_html (:html mail)}))
 
 (defn make-mad-mimi
-  [api-key username]
-  (partial mad-mimi api-key username))
+  [api-key username from]
+  (partial mad-mimi api-key username from))
