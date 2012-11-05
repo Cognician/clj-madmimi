@@ -14,12 +14,17 @@ It's not up on Clojars yet, sorry! You'll have to drop this project into your Le
 ;; grab a ready-to-use sending function
 (def mm (clj-madmimi.core/mad-mimi "your api key" "your username"))
 
+(def message {:promotion "MadMimi promotion"
+              :to "To address"
+              :subject "Subject"
+              :from "Your registered MadMimi originator"
+              :html "Your email's html"})
+
 ;; send!
-(mm {:promotion "MadMimi promotion"
-     :to "To address"
-     :subject "Subject"
-     :from "Your registered MadMimi originator"
-     :html "Your email's html"}
+(def send-result (mm message))
+
+;; inspect result from MadMimi API
+(print send-result)
 ```
 
 ## License
