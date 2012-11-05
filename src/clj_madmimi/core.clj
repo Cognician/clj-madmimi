@@ -1,18 +1,24 @@
 (ns clj-madmimi.core
   (:require [clj-http.client :as client]))
 
-(defn send-mimi-mail [api-key username mail]
-  (let [mail-map {:username username
-                  :api_key api-key
-                  :promotion_name (:promotion mail)
-                  :recipient (:to mail)
-                  :subject (:subject mail)
-                  :from (:from mail)
-                  :raw_html (:html mail)}
-        request {:form-params mail-map
-                 :throw-exceptions false}
-        response (client/post "https://api.madmimi.com/mailer" request)]
-    response))
+(def mad-mimi-api "https://api.madmimi.com/mailer")
 
-(defn mad-mimi [api-key username]
-  (partial send-mimi-mail api-key username))
+(defn send-mail
+  [mail]
+  (client/post mad-mimi-api {:form-params mail
+                             :throw-exceptions false}))
+
+(defn mad-mimi
+  [api-key username mail]
+  {:pre [(every? #{:promotion :to :subject :html} (keys mail))]}
+  (send-mail {:api_key api-key
+              :username username
+              :from username
+              :promotion_name (:promotion mail)
+              :recipient (:to mail)
+              :subject (:subject mail)
+              :raw_html (:html mail)}))
+
+(defn make-mad-mimi
+  [api-key username]
+  (partial mad-mimi api-key username))

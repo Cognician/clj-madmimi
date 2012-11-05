@@ -4,7 +4,7 @@ A Clojure library to send mail with the [Mad Mimi](https://madmimi.com/) [API](h
 
 ## Installation
 
-It's not up on Clojars yet, sorry! You'll have to drop this project into your Leiningen project's checkouts/ folder.
+Add `[clj-madmimi "0.1.0"]` to your Leiningen project's dependencies.
 
 ## Usage
 
