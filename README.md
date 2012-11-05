@@ -17,7 +17,7 @@ It's not up on Clojars yet, sorry! You'll have to drop this project into your Le
 ;; send!
 (mm {:promotion "MadMimi promotion"
      :to "To address"
-     :subject "Subject
+     :subject "Subject"
      :from "Your registered MadMimi originator"
      :html "Your email's html"}
 ```
