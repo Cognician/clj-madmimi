@@ -36,7 +36,7 @@ On clojars at <https://clojars.org/clj-madmimi>.
 
 ## License
 
-Copyright © 2012 Cognician Software.
+Copyright © 2012 Cognician Software (Pty) Ltd.
 
 With thanks to Steve Losh for [clojure-postmark](https://github.com/sjl/clojure-postmark).
 
