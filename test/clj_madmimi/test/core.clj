@@ -13,7 +13,7 @@
                  :html test-html
                  :promotion "Test Promotion"})
 
-(fact "Test MadMimi Mail uses the right structure."
+(fact "Test that MadMimi Mail uses the right structure."
   (mm test-email)
   => {:username "test@mail.com"
       :api_key "NOT-A-VALID-API-KEY"

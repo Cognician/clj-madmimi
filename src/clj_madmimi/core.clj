@@ -5,8 +5,7 @@
 
 (defn send-mail
   [mail]
-  (client/post mad-mimi-api {:form-params mail
-                             :throw-exceptions false}))
+  (client/post mad-mimi-api {:form-params mail}))
 
 (defn mad-mimi
   [api-key username from mail]
