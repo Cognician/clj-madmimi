@@ -1,4 +1,4 @@
-(defproject clj-madmimi "0.1.1"
+(defproject clj-madmimi "0.1.2"
   :description "Clojure interface for Mad Mimi email service"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [clj-http "0.6.0"]]
