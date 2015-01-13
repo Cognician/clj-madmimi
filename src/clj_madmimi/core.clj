@@ -13,17 +13,16 @@
               (:to mail)
               (:subject mail)
               (:html mail))]}
-  (let [to-send {:api_key api-key
-                 :username username
-                 :from from
-                 :promotion_name (:promotion mail)
-                 :recipient (:to mail)
-                 :subject (:subject mail)
-                 :raw_html (:html mail)}
-        to-send (if-let [reply-to (:reply-to mail)]
-                  (assoc to-send :reply_to reply-to)
-                  to-send)]
-    (send-mail to-send)))
+  (send-mail
+   (cond-> {:api_key        api-key
+            :username       username
+            :from           from
+            :promotion_name (:promotion mail)
+            :recipient      (:to mail)
+            :subject        (:subject mail)
+            :raw_html       (:html mail)}
+     (:reply-to mail) (assoc :reply_to (:reply-to mail))
+     (:track-links? mail) (assoc :track_links (boolean (:track-links? mail))))))
 
 (defn make-mad-mimi
   [api-key username from]
