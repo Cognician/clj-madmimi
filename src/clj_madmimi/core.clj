@@ -1,14 +1,10 @@
 (ns clj-madmimi.core
   (:require [clj-http.client :as client]))
 
-(def mad-mimi-api "https://api.madmimi.com/mailer")
+(def default-api-url   "https://api.madmimi.com/mailer")
+(def alternate-api-url "https://madmimi.com/mailer")
 
-(defn send-mail
-  [mail]
-  (client/post mad-mimi-api {:form-params mail}))
-
-(defn mad-mimi
-  [api-key username from mail]
+(defn mad-mimi [api-url api-key username from mail]
   {:pre [(and (:promotion mail)
               (:to mail)
               (:subject mail)
@@ -26,8 +22,10 @@
 
                   (not (nil? (:track-links? mail)))
                   (assoc :track_links (boolean (:track-links? mail))))]
-    (send-mail payload)))
+    (client/post api-url {:form-params payload})))
 
 (defn make-mad-mimi
-  [api-key username from]
-  (partial mad-mimi api-key username from))
+  ([api-key username from]
+   (make-mad-mimi default-api-url api-key username from))
+  ([api-url api-key username from]
+   (partial mad-mimi api-url api-key username from)))
